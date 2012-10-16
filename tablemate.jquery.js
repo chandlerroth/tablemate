@@ -1,3 +1,5 @@
+//! Tablemate v0.0.1 (Copyright Chandler Roth 2012) https://github.com/munchin/tablemate
+
 (function( $ ) {
   function wrapping() {
     if (columns.has('div.tablemate_proc').length == 0) {
@@ -5,18 +7,25 @@
     }
   }
 
-  function vars() {
+  function compute(duration) {
+    if (duration == 'slow') {
+      return 600;
+    } else if (duration == 'fast') {
+      return 200;
+    } else if (duration == "" || isNaN(duration) || duration === undefined) {
+      return 400;
+    }
+  }
+
+  $.fn.tableDown = function(duration) {
+    duration = compute(duration);
+
     row             = $(this).closest('tr');
     columns         = $(row).children('td');
-    style           = columns.attr('style');
     padding_top     = columns.css('padding-top');
     padding_bottom  = columns.css('padding-bottom');
     duration        = duration / 2;
     visible         = $(row).is(":visible");
-  }
-
-  $.fn.tableDown = function(duration) {
-    vars();
 
     if (!visible) {
       columns.css('padding-top', '0');
@@ -41,7 +50,15 @@
   }
 
   $.fn.tableUp = function(duration) {
-    vars();
+    duration = compute(duration);
+
+    row             = $(this).closest('tr');
+    columns         = $(row).children('td');
+    style           = columns.attr('style');
+    padding_top     = columns.css('padding-top');
+    padding_bottom  = columns.css('padding-bottom');
+    duration        = duration / 2;
+    visible         = $(row).is(":visible");
 
     if (visible) {
       wrapping();
@@ -49,14 +66,18 @@
       columns.animate({
         paddingTop: '0',
         paddingBottom: '0'
-      }, duration);
+      }, duration, function() {
+        columns.removeAttr('style');
+      });
 
       columns.children('div.tablemate_proc').slideUp(duration, function() {
         contents = $(this).contents();
         $(this).replaceWith(contents);
 
         row.hide()
+
       });
+
 
     }
   }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tablemate</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="Tablemate documentation">
+    <meta name="author" content="Chandler Roth">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="tablemate.min.jquery.js"></script>
+
+    <style>
+      table {
+        width: 40%;
+        background-color: #f1f1f1;
+      }
+
+      tr.row {
+        cursor: pointer;
+      }
+
+      tr.row-details {
+        background-color: #fff;
+      }
+
+      td {
+        padding: 10px;
+      }
+
+      .hide {
+        display: none;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <header>
+      <h1>Tablemate v0.0.1</h1>
+      <p>Tablemate is an awesome jQuery plugin to slide your table rows! (More table type support coming soon)</p>
+    </header>
+
+    <p><a href="#" class="toggle">slideToggle table row</a>.</p>
+
+    <table id="toggle">
+      <tr class="row">
+        <td>Data 1
+        </td>
+        <td>Data 2
+        </td>
+      </tr>
+
+      <tr class="row-details hide">
+        <td>Detail Data 1
+        </td>
+        <td>Detail Data 2
+        </td>
+      </tr>
+    </table>
+
+    <p><a href="#" class="down">slideDown table row</a>.</p>
+
+    <table id="down">
+      <tr class="row">
+        <td>Data 1
+        </td>
+        <td>Data 2
+        </td>
+      </tr>
+
+      <tr class="row-details hide">
+        <td>Detail Data 1
+        </td>
+        <td>Detail Data 2
+        </td>
+      </tr>
+    </table>
+
+
+    <p><a href="#" class="up">slideUp table row</a>.</p>
+
+    <table id="up">
+      <tr class="row">
+        <td>Data 1
+        </td>
+        <td>Data 2
+        </td>
+      </tr>
+
+      <tr class="row-details">
+        <td>Detail Data 1
+        </td>
+        <td>Detail Data 2
+        </td>
+      </tr>
+    </table>
+
+    <h2>Example usage:</h2>
+<p><b>HTML</b></p>
+    <xmp>
+<a href="#" class="toggle">toggle</a>
+
+<table>
+  <tr class="row">
+    <td>Data 1
+    </td>
+    <td>Data 2
+    </td>
+  </tr>
+
+  <tr class="row-details">
+    <td>Detail Data 1
+    </td>
+    <td>Detail Data 2
+    </td>
+  </tr>
+</table>
+</xmp>
+<p><b>jQuery</b></p>
+    <xmp>
+$('.toggle').click(function() {
+  $('.row-details').tableToggle();
+});
+</xmp>
+
+    <script type="text/javascript">
+      $('.toggle').click(function() {
+        $('#toggle .row-details').tableToggle();
+      });
+
+      $('#toggle .row').click(function() {
+        $('#toggle .row-details').tableToggle();
+      });
+
+      $('.down').click(function() {
+        $('#down .row-details').tableDown();
+      });
+
+      $('#down .row').click(function() {
+        $('#down .row-details').tableDown();
+      });
+
+      $('.up').click(function() {
+        $('#up .row-details').tableUp();
+      });
+
+      $('#up .row').click(function() {
+        $('#up .row-details').tableUp();
+      });
+    </script>
+  </body>
+</html>
