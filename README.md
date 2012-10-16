@@ -1,4 +1,4 @@
 tablemate
 =========
 
-A friendly jQuery plugin to animate your tables!
+Tablemate is a friendly jQuery plugin that allows you to animate your tables!
