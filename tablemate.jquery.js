@@ -75,10 +75,7 @@
         $(this).replaceWith(contents);
 
         row.hide()
-
       });
-
-
     }
   }
 
@@ -88,9 +85,7 @@
 
     if (visible) {
       this.tableUp(duration);
-    }
-
-    else {
+    } else {
       this.tableDown(duration);
     }
   };
