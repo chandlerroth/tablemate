@@ -1,4 +1,4 @@
-//! Tablemate v0.0.1 (Copyright Chandler Roth 2012) https://github.com/munchin/tablemate
+//! Tablemate v0.0.2 (Copyright Chandler Roth 2012) https://github.com/munchin/tablemate
 
 (function( $ ) {
   function wrapping() {
@@ -14,6 +14,8 @@
       return 200;
     } else if (duration == "" || isNaN(duration) || duration === undefined) {
       return 400;
+    } else {
+      return duration;
     }
   }
 
@@ -54,7 +56,6 @@
 
     row             = $(this).closest('tr');
     columns         = $(row).children('td');
-    style           = columns.attr('style');
     padding_top     = columns.css('padding-top');
     padding_bottom  = columns.css('padding-bottom');
     duration        = duration / 2;
@@ -67,7 +68,8 @@
         paddingTop: '0',
         paddingBottom: '0'
       }, duration, function() {
-        columns.removeAttr('style');
+        columns.css('padding-top', '');
+        columns.css('padding-bottom', '');
       });
 
       columns.children('div.tablemate_proc').slideUp(duration, function() {

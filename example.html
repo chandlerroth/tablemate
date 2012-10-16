@@ -13,11 +13,10 @@
     <style>
       table {
         width: 40%;
-        background-color: #f1f1f1;
       }
 
       tr.row {
-        cursor: pointer;
+        background-color: #f1f1f1;
       }
 
       tr.row-details {
@@ -37,11 +36,11 @@
 
   <body>
     <header>
-      <h1>Tablemate v0.0.1</h1>
+      <h1>Tablemate v0.0.2</h1>
       <p>Tablemate is an awesome jQuery plugin to slide your table rows! (More table type support coming soon)</p>
     </header>
 
-    <p><a href="#" class="toggle">slideToggle table row</a>.</p>
+    <p><input type="button" class="toggle" value=".tableToggle()" /></p>
 
     <table id="toggle">
       <tr class="row">
@@ -54,12 +53,19 @@
       <tr class="row-details hide">
         <td>Detail Data 1
         </td>
-        <td>Detail Data 2
+        <td style="color: #ccc;">Detail Data 1
+        </td>
+      </tr>
+
+      <tr class="row">
+        <td>Data 3
+        </td>
+        <td>Data 4
         </td>
       </tr>
     </table>
 
-    <p><a href="#" class="down">slideDown table row</a>.</p>
+    <p><input type="button" class="down" value=".tableDown()" /></p>
 
     <table id="down">
       <tr class="row">
@@ -78,7 +84,7 @@
     </table>
 
 
-    <p><a href="#" class="up">slideUp table row</a>.</p>
+    <p><input type="button" class="up" value=".tableUp()" /></p>
 
     <table id="up">
       <tr class="row">
@@ -129,23 +135,11 @@ $('.toggle').click(function() {
         $('#toggle .row-details').tableToggle();
       });
 
-      $('#toggle .row').click(function() {
-        $('#toggle .row-details').tableToggle();
-      });
-
       $('.down').click(function() {
         $('#down .row-details').tableDown();
       });
 
-      $('#down .row').click(function() {
-        $('#down .row-details').tableDown();
-      });
-
       $('.up').click(function() {
-        $('#up .row-details').tableUp();
-      });
-
-      $('#up .row').click(function() {
         $('#up .row-details').tableUp();
       });
     </script>
