@@ -1,4 +1,4 @@
-//! Tablemate v0.0.2 (Copyright Chandler Roth 2012) https://github.com/munchin/tablemate
+//! Tablemate v0.0.3 (Copyright Chandler Roth 2012) https://github.com/munchin/tablemate
 
 (function( $ ) {
   function wrapping() {
@@ -19,7 +19,16 @@
     }
   }
 
-  $.fn.tableDown = function(duration) {
+  function think(duration, callback) {
+   if (typeof duration == 'function') {
+      return duration;
+    } else {
+      return callback;
+    }
+  }
+
+  $.fn.tableDown = function(duration, callback) {
+    callback = think(duration, callback);
     duration = compute(duration);
 
     row             = $(this).closest('tr');
@@ -47,11 +56,17 @@
       columns.children('div.tablemate_proc').slideDown(duration, function() {
         contents = $(this).contents();
         $(this).replaceWith(contents);
+
+        // FIXME multiple callbacks!
+        if (typeof callback == 'function') {
+          callback.call(this);
+        }
       });
     }
   }
 
-  $.fn.tableUp = function(duration) {
+  $.fn.tableUp = function(duration, callback) {
+    callback = think(duration, callback);
     duration = compute(duration);
 
     row             = $(this).closest('tr');
@@ -77,18 +92,23 @@
         $(this).replaceWith(contents);
 
         row.hide()
+
+        // FIXME multiple callbacks!
+        if (typeof callback == 'function') {
+          callback.call(this);
+        }
       });
     }
   }
 
-  $.fn.tableToggle = function(duration) {
+  $.fn.tableToggle = function(duration, callback) {
     row = $(this).closest('tr');
     visible = $(row).is(":visible");
 
     if (visible) {
-      this.tableUp(duration);
+      this.tableUp(duration, callback);
     } else {
-      this.tableDown(duration);
+      this.tableDown(duration, callback);
     }
   };
 })( jQuery );
