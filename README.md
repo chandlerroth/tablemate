@@ -17,30 +17,30 @@ Usage
 
 In short, tablemate captures the existing definition around `.slideDown` (and friends) and uses jQuery-like durations.
 
-Duration values:
+`duration` values:
 
-1. `slow` = `600` milliseconds
-2. `fast` = `200` milliseconds
-3. When nothing is provided, duration defaults to `400` milliseconds
-4. Custom numeric value will be translated to time in milliseconds
+1. `slow` is `600` milliseconds
+2. `fast` is `200` milliseconds
+3. When nothing is provided, `duration` defaults to `400` milliseconds
+4. Custom numeric `duration` value will be translated to time in milliseconds
 
 ###.tableToggle()
 
 Toggle slide table row visibility.
 
-`.tableToggle(duration)`
+`.tableToggle(duration, callback)`
 
 ###.tableDown()
 
 Slide table row down to make it visible.
 
-`.tableDown(duration)`
+`.tableDown(duration, callback)`
 
 ###.tableUp()
 
 Slide visible table row up to make it invisible.
 
-`.tableUp(duration)`
+`.tableUp(duration, callback)`
 
 Example
 -------
