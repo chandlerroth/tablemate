@@ -24,19 +24,19 @@ In short, tablemate captures the existing definition around `.slideDown` (and fr
 3. When nothing is provided, `duration` defaults to `400` milliseconds
 4. Custom numeric `duration` value will be translated to time in milliseconds
 
-###.tableToggle()
+### .tableToggle()
 
 Toggle slide table row visibility.
 
 `.tableToggle(duration, callback)`
 
-###.tableDown()
+### .tableDown()
 
 Slide table row down to make it visible.
 
 `.tableDown(duration, callback)`
 
-###.tableUp()
+### .tableUp()
 
 Slide visible table row up to make it invisible.
 
