@@ -3,6 +3,7 @@ tablemate
 
 Tablemate is a friendly jQuery plugin that allows you to animate your tables! Unfortunately the core jQuery library doesn't allow for you animate your tables because of limiting factors from the DOM. Tablemate is a hack that wraps a div (class of `.tablemate_proc`) around your `td` contents. Then, it majestically animates your `tr`'s like you'd expect!
 
+>⚠️ Notice: This plugin is not receiving maintainance, and has not been tested with the latest version of jQuery
 
 Installation
 ------------
